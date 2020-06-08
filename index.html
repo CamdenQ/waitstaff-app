@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Waitstaff Calculator</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="script.js"></script>
+</head>
+
+<body id="home">
+
+  <h1>Waitstaff Calculator</h1>
+  
+  <section id=''>
+    <h2>Enter the Meal Details</h2>
+
+    <form id='mealDetails'>
+      <fieldset>
+        <div>
+          <label for='basePrice'>Base Meal Price: $</label>
+          <input type="number" id="basePrice" name='basePrice' class=''>
+        </div>
+        <div>
+          <label for='taxRate'>Tax Rate: %</label>
+          <input type='number' id='taxRate' name='taxRate' class=''>
+        </div>
+        <div>
+          <label for='tipPercent'>Tip Percentage: %</label>
+          <input type='number' id='tipPercent' name='tipPercent' class=''>
+        </div>
+        <div>
+          <button type='reset'>Cancel</button>
+          <button type='submit' id='submitDetails'>Submit</button>
+        </div>
+      </fieldset>
+    </form>
+  </section>
+
+  <section id='custCharges'>
+    <h2>Customer Charges</h2>
+    <p>Subtotal: $0.00</p>
+    <p>Tip: $0.00</p>
+    <br>
+    <p>Total: $0.00</p>
+  </section>
+
+  <section id='earningsInfo'>
+    <h2>My Earnings Info</h2>
+    <p >Tip Total: $0.00</p>
+    <p>Meal Count: 0</p>
+    <p>Average Tip Per Meal: $0.00</p>
+    <form>
+      <fieldset>
+        <button type="button" id="resetEverything">Reset</button>
+  </section>
+
+</body>
+</html>

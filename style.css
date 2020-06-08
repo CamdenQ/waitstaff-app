@@ -1,0 +1,14 @@
+fieldset {
+  width: 310px;
+  text-align: right;
+}
+
+section {
+  border-style: solid;
+  margin: 10px;
+  padding: 15px;
+}
+
+h2 {
+  margin-top: 0;
+}

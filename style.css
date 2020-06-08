@@ -5,10 +5,32 @@ fieldset {
 
 section {
   border-style: solid;
-  margin: 10px;
+  margin: auto;
+  margin-bottom: 20px;
   padding: 15px;
 }
 
 h2 {
   margin-top: 0;
+}
+
+body {
+  text-align: center;
+}
+
+section p {
+  text-align: right;
+}
+
+section {
+  width: 340px;
+  padding: 15px;
+}
+
+fieldset input {
+  margin: 2px 0;
+}
+
+fieldset button {
+  margin-top: 2px;
 }

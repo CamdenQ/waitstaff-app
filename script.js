@@ -9,14 +9,14 @@ function generateCustCharges(subtotal,tip,total) {
           <p>Subtotal: $${subtotal}</p>
           <p>Tip: $${tip}</p>
           <hr class="line"> 
-          <p>Total: $${total}</p>`;
+          <p>Total: $${Number(total.toFixed(2))}</p>`;
 }
 
 function generateEarningsInfo(tipPerMeal) {
   console.log('generateEarningsInfo ran!');
   return `<h2>My Earnings Info</h2>
-          <p>Tip Total: $${STORE.tipTotal}</p>
-          <p>Meal Count: ${STORE.mealCount}</p>
+          <p>Tip Total: $${Number(STORE.tipTotal.toFixed(2))}</p>
+          <p>Meal Count: ${Number(STORE.mealCount.toFixed(2))}</p>
           <p>Average Tip Per Meal: $${tipPerMeal}</p>
           <form id="resetForm">
             <fieldset>
@@ -35,23 +35,29 @@ function calculateCharges(baseMealPrice,taxRate,tipPercent) {
 
   const total = subtotal + tip;
 
-  STORE.tipTotal += tip;
+  STORE.tipTotal += Number(tip.toFixed(2));
 
   return [subtotal, tip, total];
 }
 
 function renderCustCharges(baseMealPrice,taxRate,tipPercent) {
   console.log('renderCustCharges ran!');
-  const html = generateCustCharges(...calculateCharges(baseMealPrice,taxRate,tipPercent));
+  const calculatedCarges = calculateCharges(baseMealPrice,taxRate,tipPercent),
+    html = generateCustCharges(...calculatedCarges);
   $('#custCharges').html(html);
+}
+
+function calculateEarningsInfo() {
+  const tipTotal = STORE.tipTotal,
+    mealCount = STORE.mealCount,
+    tipPerMeal = tipTotal / mealCount;
+  return Number(tipPerMeal.toFixed(2));
 }
 
 function renderEarningsInfo() {
   console.log('renderEarningsInfo ran!');
-  const tipTotal = STORE.tipTotal,
-    mealCount = STORE.mealCount,
-    tipPerMeal = tipTotal / mealCount,
-    html = generateEarningsInfo(tipTotal,mealCount,tipPerMeal);
+  const calculatedEarnings = calculateEarningsInfo(),
+    html = generateEarningsInfo(calculatedEarnings);
   $('#earningsInfo').html(html);
 }
 

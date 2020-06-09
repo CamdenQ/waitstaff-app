@@ -39,6 +39,14 @@ function calculateCharges(baseMealPrice,taxRate,tipPercent) {
   return [subtotal, tip, total];
 }
 
+
+/**
+ * 
+ * @param {Number} baseMealPrice 
+ * @param {Number} taxRate 
+ * @param {Number} tipPercent 
+ */
+
 function renderCustCharges(baseMealPrice,taxRate,tipPercent) {
   const calculatedCarges = calculateCharges(baseMealPrice,taxRate,tipPercent),
     html = generateCustCharges(...calculatedCarges);

@@ -27,11 +27,13 @@ function calculateCharges(baseMealPrice,taxRate,tipPercent) {
   let subtotal = baseMealPrice * taxRate + baseMealPrice,
     tip = tipPercent * baseMealPrice;
 
+  //This rounds the variables to two decimal places
   subtotal = Number(subtotal.toFixed(2));
   tip = Number(tip.toFixed(2));
 
   const total = subtotal + tip;
 
+  //Rounding again when adding to be safe
   STORE.tipTotal += Number(tip.toFixed(2));
 
   return [subtotal, tip, total];
@@ -40,15 +42,19 @@ function calculateCharges(baseMealPrice,taxRate,tipPercent) {
 function renderCustCharges(baseMealPrice,taxRate,tipPercent) {
   const calculatedCarges = calculateCharges(baseMealPrice,taxRate,tipPercent),
     html = generateCustCharges(...calculatedCarges);
+
   $('#custCharges').html(html);
 }
 
 function calculateEarningsInfo() {
   const tipTotal = STORE.tipTotal,
     mealCount = STORE.mealCount;
+
   if (mealCount > 0) {
     const tipPerMeal = tipTotal / mealCount;
+
     return Number(tipPerMeal.toFixed(2));
+
   } else {
     return 0;
   }
@@ -57,16 +63,22 @@ function calculateEarningsInfo() {
 function renderEarningsInfo() {
   const calculatedEarnings = calculateEarningsInfo(),
     html = generateEarningsInfo(calculatedEarnings);
+
   $('#earningsInfo').html(html);
 }
 
 function handleSubmitMealDetails() {
   $('#mealDetails').on('submit', event => {
     event.preventDefault();
+
     const baseMealPrice = Number($('#basePrice').val()),
+
+      //Takes whole-number % inputs and converts them to decimals
       taxRate = Number($('#taxRate').val())/100,
       tipPercent = Number($('#tipPercent').val())/100;
+
     STORE.mealCount++;
+
     renderCustCharges(baseMealPrice,taxRate,tipPercent);
     renderEarningsInfo();
   });
@@ -74,6 +86,7 @@ function handleSubmitMealDetails() {
 function resetEverything() {
   STORE.tipTotal = 0;
   STORE.mealCount = 0;
+
   renderCustCharges(0,0,0);
   renderEarningsInfo();
 }

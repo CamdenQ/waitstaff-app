@@ -49,9 +49,13 @@ function renderCustCharges(baseMealPrice,taxRate,tipPercent) {
 
 function calculateEarningsInfo() {
   const tipTotal = STORE.tipTotal,
-    mealCount = STORE.mealCount,
-    tipPerMeal = tipTotal / mealCount;
-  return Number(tipPerMeal.toFixed(2));
+    mealCount = STORE.mealCount;
+  if (mealCount > 0) {
+    const tipPerMeal = tipTotal / mealCount;
+    return Number(tipPerMeal.toFixed(2));
+  } else {
+    return 0;
+  }
 }
 
 function renderEarningsInfo() {
